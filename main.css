@@ -1,6 +1,6 @@
 html {margin: 0; padding: 0;}
 body {font-family: sans-serif; margin: 0; padding: 0;}
-#content {font-family: monospace; font-size: 13px; /*font-size: 4vw;*/ line-height: 2em; padding: .2em .4em; white-space: nowrap;} /* vm for IE9 */
+#content {font-family: monospace; font-size: 13px; line-height: 2em; padding: .2em .4em; white-space: nowrap;} /* vm for IE9 */
 
 
 #fontSizeBtns {font-size: 13px; position: fixed; right: 1px; top: 2px;}
