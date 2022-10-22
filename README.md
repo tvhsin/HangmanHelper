@@ -4,7 +4,7 @@ Hangman Helper is an assistant for the person holding a hangman word that others
 Hightly modified for the use of [Discordian Alley (Hogwarts)](https://discord.gg/tfdAD9rwv8) Discord server's minigames. Not affiliated.
 
 **Screenshot:**
-![image](https://user-images.githubusercontent.com/53604347/197263745-1ab94ed3-3ca1-435c-97bc-37fe67c491cd.png)
+![image](https://user-images.githubusercontent.com/53604347/197326415-167250c7-d23f-4af2-bb49-d08c1c701102.png)
 
 It has controls to adjust font size, which it remembers for your next visit.
 
