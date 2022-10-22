@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!--
+
+<head>
+  <!--
         ░░░░░░░░░▄░░░░░░░░░░░░░░▄
         ░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌ Wow
         ░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐
@@ -22,129 +23,101 @@
         ░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
         ░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀ much code
     -->
-	
-	
-<!-- Primary Meta Tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
-<title>Hangman Helper</title>
-<meta name="description" content="HangmanHelper is an assistant for the person holding a hangman word that others are trying to guess.">
-<meta name="keywords" content="hangman,game,discord,minigame,help,helper,host">
-<meta name="author" content="LightningBolt">
-<meta name="robots" content="index, follow">
-<meta name="revisit-after" content="1 days">
-<meta name="rating" content="safe for kids">
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://lightningbolt62.github.io/HangmanHelper/">
-<meta property="og:title" content="Hangman Helper">
-<meta property="og:description" content="HangmanHelper is an assistant for the person holding a hangman word that others are trying to guess.">
-<meta property="og:image" content="https://i.imgur.com/7ls7kcG.png">
+  <!-- Primary Meta Tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+  <title>Hangman Helper</title>
+  <meta name="description"
+    content="HangmanHelper is an assistant for the person holding a hangman word that others are trying to guess." />
+  <meta name="keywords" content="hangman,game,discord,minigame,help,helper,host" />
+  <meta name="author" content="LightningBolt" />
+  <meta name="robots" content="index, follow" />
+  <meta name="revisit-after" content="1 days" />
+  <meta name="rating" content="safe for kids" />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://lightningbolt62.github.io/HangmanHelper/">
-<meta property="twitter:title" content="Hangman Helper">
-<meta property="twitter:description" content="HangmanHelper is an assistant for the person holding a hangman word that others are trying to guess.">
-<meta property="twitter:image" content="https://i.imgur.com/7ls7kcG.png">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lightningbolt62.github.io/HangmanHelper/" />
+  <meta property="og:title" content="Hangman Helper" />
+  <meta property="og:description"
+    content="HangmanHelper is an assistant for the person holding a hangman word that others are trying to guess." />
+  <meta property="og:image" content="https://i.imgur.com/7ls7kcG.png" />
 
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://lightningbolt62.github.io/HangmanHelper/" />
+  <meta property="twitter:title" content="Hangman Helper" />
+  <meta property="twitter:description"
+    content="HangmanHelper is an assistant for the person holding a hangman word that others are trying to guess." />
+  <meta property="twitter:image" content="https://i.imgur.com/7ls7kcG.png" />
 
-    <link rel="stylesheet" type="text/css" href="main.css" />
-  </head>
-  <body onload="bodyOnLoad()">
-    <div id="fontSizeBtns">
-      Size
-      <input
-        type="button"
-        value="▼"
-        title="Smaller font"
-        onclick="adjustFontSize(false)"
-      /><input
-        type="button"
-        value="▲"
-        title="Larger font"
-        onclick="adjustFontSize(true)"
-      />
+  <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body onload="bodyOnLoad()">
+  <div id="fontSizeBtns">
+    Size
+    <input type="button" value="▼" title="Smaller font" onclick="adjustFontSize(false)" /><input type="button" value="▲"
+      title="Larger font" onclick="adjustFontSize(true)" />
+  </div>
+  <div id="version">v1.12</div>
+
+  <div id="content">
+    <div id="header">
+      <h1>Hangman Helper</h1>
     </div>
-    <div id="version">v1.11</div>
 
-    <div id="content">
-      <div id="header">
-        <h1>Hangman Helper</h1>
-      </div>
-
-      <div id="main">
-        <form
-          action="#"
-          method="POST"
-          onsubmit="return false;"
-          oninput="updateDisplay()"
-        >
-          <div class="row">
-            <label class="label" for="word">Word:</label>
-            <input id="word" placeholder="Hogwarts" />
-            <span id="wordLen"></span>
-          </div>
-          <div class="row">
-            <label class="label" for="guesses">Guesses:</label>
-            <input id="guesses" placeholder="GGWGTDHSRNHOFDKA" />
-          </div>
-          <div class="row">
-            <label class="label width-auto" for="explainCount"
-              >Explain last</label
-            >
-            <select id="explainCount" onchange="updateDisplay()">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="All">All</option>
-            </select>
-            letter(s)
-          </div>
-        </form>
-        <div id="successMsg">&nbsp;</div>
-        <textarea
-          id="results"
-          rows="8"
-          cols="80"
-          readonly
-          aria-label="Results"
-        ></textarea>
-      </div>
-
-      <div id="footer">
-        <p>
-          By
-          <a
-            style="text-decoration: none"
-            href="https://discord.com/users/733232145304125540"
-            target="_blank"
-            >LightningBolt</a
-          >, for
-          <a
-            style="text-decoration: none"
-            href="https://discord.gg/tfdAD9rwv8"
-            target="_blank"
-            >Discordian Alley (Hogwarts)</a
-          >. <br />- <a
-            style="text-decoration: none"
-            href="https://github.com/LightningBolt62/HangmanHelper"
-            target="_blank"
-            >Source code</a
-          > -
-        </p>
-      </div>
-      <script src="lib/store/store.legacy.min.js"></script>
-      <script src="main.js"></script>
+    <div id="main">
+      <form action="#" method="POST" onsubmit="return false;" oninput="updateDisplay()">
+        <div class="row">
+          <label class="label" for="word">Word:</label>
+          <input id="word" placeholder="Hogwarts" />
+          <span id="wordLen"></span>
+        </div>
+        <div class="row">
+          <label class="label" for="guesses">Guesses:</label>
+          <input id="guesses" placeholder="GGWGTDHSRNHOFDKA" />
+        </div>
+        <div class="row">
+          <label class="label width-auto" for="explainCount">Explain last</label>
+          <select id="explainCount" onchange="updateDisplay()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="All">All</option>
+          </select>
+          <label class="label width-auto" for="explainCount">letter(s)</label>
+        </div>
+      </form>
+      <div id="successMsg">&nbsp;</div>
+      <textarea id="results" rows="8" cols="80" readonly aria-label="Results"></textarea>
     </div>
-  </body>
+
+    <div id="footer">
+      <p>
+        By
+        <a style="text-decoration: none" href="https://discord.com/users/733232145304125540"
+          target="_blank">LightningBolt</a>, for
+        <a style="text-decoration: none" href="https://discord.gg/tfdAD9rwv8" target="_blank">Discordian Alley
+          (Hogwarts)</a>. <br />-
+        <a style="text-decoration: none" href="https://github.com/LightningBolt62/HangmanHelper" target="_blank">Source
+          code</a>
+        -
+      </p>
+    </div>
+    <script src="lib/store/store.legacy.min.js"></script>
+    <script src="main.js"></script>
+  </div>
+</body>
+
 </html>
