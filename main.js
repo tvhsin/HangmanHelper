@@ -66,7 +66,7 @@ function updateDisplay() {
     }
   }
   document.getElementById("successMsg").innerHTML = success
-    ? "Success! All of the guesses have correctly formed the word"
+    ? "<p>Success! All of the guesses have correctly formed the word</p>"
     : "&nbsp;";
 
   wordDisplay = lettersList(wordDisplay);
