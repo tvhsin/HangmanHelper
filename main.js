@@ -87,14 +87,13 @@ function updateDisplay() {
 
   wrongLetters = wrongLetters.join("");
 
-  wordDisplay = lettersList(wordDisplay);
   if (guessedLetters)
-    guessedLetters = "All Guesses: " + lettersList(guessedLetters, true);
+    guessedLetters = "All guesses: " + lettersList(guessedLetters, true);
   if (wrongLetters)
-    wrongLetters = "Incorrect Guesses: " + lettersList(wrongLetters, true);
+    wrongLetters = "Incorrect guesses: " + lettersList(wrongLetters, true);
 
   document.getElementById("results").value =
-    wordDisplay +
+    lettersList(wordDisplay) +
     "\n" +
     wordLen +
     " letters\n" +
@@ -103,6 +102,25 @@ function updateDisplay() {
     guessedLetters +
     "\n" +
     wrongLetters;
+  var discordFormat = `\`\`\`${wordDisplay}\`\`\`\n${wrongLetters}`;
+  document.getElementById("discordFormat").value = discordFormat.toString();
+  document.getElementById("theMsgCodeblock").innerHTML = wordDisplay;
+  document.getElementById("theMsgNoCodeblock").innerHTML = wrongLetters;
+}
+
+function copyDiscordFormat() {
+  var copyText = document.getElementById("discordFormat");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+
+  var tooltip = document.getElementById("tooltip");
+  tooltip.innerHTML = "Copied!";
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("tooltip");
+  tooltip.innerHTML = "Copy to clipboard";
 }
 
 function numberText(number) {
@@ -173,11 +191,13 @@ function bodyOnLoad() {
     "text-align: center",
     "font-weight: bold",
   ].join(";");
-	console.log("%c Watchu doing here in the console sussybaka👀", styles);
+  console.log("%c Watchu doing here in the console sussybaka👀", styles);
   adjustFontSize();
   document.getElementById("word").value = store.get("word") || "Hogwarts";
   document.getElementById("guesses").value =
-    store.get("guesses") || "GGWGTDHSRNHOFDKA";
+    store.get("guesses") || "GGWGTDGSFNHFDKS";
+  document.getElementById("timestamp").innerHTML =
+    "Today at " + new Date().toLocaleTimeString([], { timeStyle: "short" });
   updateDisplay();
 }
 

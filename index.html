@@ -43,7 +43,7 @@
   <meta property="og:title" content="Hangman Helper" />
   <meta property="og:description"
     content="HangmanHelper is an assistant for the person holding a hangman word that others are trying to guess." />
-  <meta property="og:image" content="https://user-images.githubusercontent.com/53604347/197326415-167250c7-d23f-4af2-bb49-d08c1c701102.png" />
+  <meta property="og:image" content="https://i.imgur.com/7ls7kcG.png" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
@@ -51,7 +51,7 @@
   <meta property="twitter:title" content="Hangman Helper" />
   <meta property="twitter:description"
     content="HangmanHelper is an assistant for the person holding a hangman word that others are trying to guess." />
-  <meta property="twitter:image" content="https://user-images.githubusercontent.com/53604347/197326415-167250c7-d23f-4af2-bb49-d08c1c701102.png" />
+  <meta property="twitter:image" content="https://i.imgur.com/7ls7kcG.png" />
 
   <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
@@ -100,7 +100,39 @@
         </div>
       </form>
       <div id="successMsg">&nbsp;</div>
-      <textarea id="results" rows="8" cols="80" readonly aria-label="Results"></textarea>
+      <textarea id="results" rows="6" cols="60" readonly aria-label="Results"></textarea>
+
+      <div id="discordFormatMsg">Discord message preview</div>
+      <section id="discMsg">
+        <div class="messageBox">
+          <div class="stupidDivThatAnnoyedMeALot">
+            <span class="avatar">
+              <img src="./assets/LightningBolt.jpg" , width="40" , height="40" , align="left" class="avatarimg" />
+            </span>
+            <span class="username text">LightningBolt</span>
+            <span>
+              <time class="timestamp text" id="timestamp">Today at 9:48 Am</time>
+            </span>
+          </div>
+          <div class="message text">
+
+            <div id="theMsgCodeblock"> xd </div>
+            <div id="theMsgNoCodeblock"> xd </div>
+          </div>
+        </div>
+      </section>
+
+
+      <div id="discordFormatMsg">Copy text in discord format:</div>
+      <textarea id="discordFormat" rows="5" cols="50" readonly aria-label="Discord Format"></textarea>
+
+      <div class="tooltip">
+        <button class="epicCopyButton" onclick="copyDiscordFormat()" onmouseout="outFunc()">
+          <span class="tooltiptext" id="tooltip">Copy to clipboard</span>
+          Copy text
+        </button>
+      </div>
+
     </div>
 
     <div id="footer">
