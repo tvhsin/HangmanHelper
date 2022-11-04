@@ -85,7 +85,7 @@ function updateDisplay() {
     }
   });
 
-  wrongLetters = wrongLetters.join("");
+  wrongLetters = removeDuplicates(wrongLetters).join("");
 
   if (guessedLetters)
     guessedLetters = "All guesses: " + lettersList(guessedLetters, true);
@@ -101,15 +101,11 @@ function updateDisplay() {
     (msg ? "\n" : "") +
     guessedLetters +
     "\n" +
-    removeDuplicates(wrongLetters.split(",")).join(",");
-  var discordFormat = `\`\`\`${wordDisplay}\`\`\`\n${removeDuplicates(
-    wrongLetters.split(",")
-  ).join(",")}`;
+    wrongLetters;
+  var discordFormat = `\`\`\`${wordDisplay}\`\`\`\n${wrongLetters}`;
   document.getElementById("discordFormat").value = discordFormat.toString();
   document.getElementById("theMsgCodeblock").innerHTML = wordDisplay;
-  document.getElementById("theMsgNoCodeblock").innerHTML = removeDuplicates(
-    wrongLetters.split(",")
-  ).join(",");
+  document.getElementById("theMsgNoCodeblock").innerHTML = wrongLetters;
 }
 function removeDuplicates(arr) {
   return arr.filter((item, index) => arr.indexOf(item) === index);
