@@ -101,13 +101,19 @@ function updateDisplay() {
     (msg ? "\n" : "") +
     guessedLetters +
     "\n" +
-    wrongLetters;
-  var discordFormat = `\`\`\`${wordDisplay}\`\`\`\n${wrongLetters}`;
+    removeDuplicates(wrongLetters.split(",")).join(",");
+  var discordFormat = `\`\`\`${wordDisplay}\`\`\`\n${removeDuplicates(
+    wrongLetters.split(",")
+  ).join(",")}`;
   document.getElementById("discordFormat").value = discordFormat.toString();
   document.getElementById("theMsgCodeblock").innerHTML = wordDisplay;
-  document.getElementById("theMsgNoCodeblock").innerHTML = wrongLetters;
+  document.getElementById("theMsgNoCodeblock").innerHTML = removeDuplicates(
+    wrongLetters.split(",")
+  ).join(",");
 }
-
+function removeDuplicates(arr) {
+  return arr.filter((item, index) => arr.indexOf(item) === index);
+}
 function copyDiscordFormat() {
   var copyText = document.getElementById("discordFormat");
   copyText.select();
